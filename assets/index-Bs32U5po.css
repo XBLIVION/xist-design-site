@@ -1,51 +1,173 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 40 23% 93%;
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
     --card: 0 0% 10%;
-    --card-foreground: 40 23% 93%;
+    --card-foreground: 0 0% 95%;
     --popover: 0 0% 10%;
-    --popover-foreground: 40 23% 93%;
+    --popover-foreground: 0 0% 95%;
     --primary: 192 100% 50%;
     --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 40 23% 93%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 30 5% 58%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 60%;
     --accent: 192 100% 50%;
     --accent-foreground: 0 0% 4%;
-    --destructive: 0 100% 63%;
-    --destructive-foreground: 40 23% 93%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
     --ring: 192 100% 50%;
-    --radius: 0rem;
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 40 23% 93%;
-    --sidebar-primary: 192 100% 50%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 40 23% 93%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 192 100% 50%;
+    --radius: 0.5rem;
   }
 
   body {
-    @apply bg-xist-background text-xist-primaryText;
-    font-family: 'Inter', sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
 
   * {
-    @apply border-xist-border;
+    border-color: hsl(var(--border));
+  }
+
+  /* Hide AI-generated images globally */
+  img[src*="team-"],
+  img[src*="mockup-editor"],
+  img[src*="merch-collection"],
+  img[src*="social-media-work"],
+  img[src*="workspace-branding"],
+  img[src*="branding-work"],
+  img[src*="hero-bg"],
+  img[src*="print-process"],
+  img[src*="service-apparel"],
+  img[src*="service-business"],
+  img[src*="service-packaging"],
+  img[src*="service-posters"],
+  img[src*="tool-showcase"],
+  img[src*="tee-mockup"],
+  img[src*="template-"] {
+    display: none !important;
+  }
+
+  /* Clean up any awkward placeholder content */
+  .team-section,
+  [class*="team"],
+  [id*="team"] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  /* Clean card styling */
+  .xist-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+
+  /* Accent button */
+  .xist-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .xist-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  /* Typography emphasis */
+  .xist-accent {
+    color: hsl(var(--accent));
+  }
+
+  .xist-dim {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Section spacing */
+  .xist-section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Monospace for technical/spec text */
+  .xist-mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+  }
+
+  /* Gradient text for hero */
+  .xist-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, #00d4aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle border accent */
+  .xist-border-accent {
+    border-left: 3px solid hsl(var(--accent));
+    padding-left: 1rem;
+  }
+}
+
+@layer utilities {
+  /* Clean scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--primary-foreground));
   }
 }
