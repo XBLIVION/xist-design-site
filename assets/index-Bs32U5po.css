@@ -50,7 +50,16 @@
     border-color: hsl(var(--border));
   }
 
-  /* Hide AI-generated images globally */
+  /* Product mockup templates - now using real Freepik photos */
+  img[src*="template-tee-front"],
+  img[src*="template-hoodie"],
+  img[src*="template-tote"] {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Hide AI-generated filler images that are not product templates */
   img[src*="team-"],
   img[src*="mockup-editor"],
   img[src*="merch-collection"],
@@ -64,8 +73,7 @@
   img[src*="service-packaging"],
   img[src*="service-posters"],
   img[src*="tool-showcase"],
-  img[src*="tee-mockup"],
-  img[src*="template-"] {
+  img[src*="tee-mockup"] {
     display: none !important;
   }
 
